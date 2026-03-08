@@ -10,12 +10,6 @@ def home():
         "message": "LRWeb API is running"
     })
 
-# Example GET endpoint
-@app.route("/api/hello", methods=["GET"])
-def hello():
-    return jsonify({
-        "message": "Hello from LRWeb!"
-    })
 
 # Example POST endpoint
 @app.route("/api/data", methods=["POST"])
