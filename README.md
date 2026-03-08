@@ -8,6 +8,11 @@ lrweb.xyz
 subdomains i think needed:
 api
 chat
-
 tools
 dev
+
+what it do:
+login
+use LRTools stuff
+track LRTools stuff
+chat
