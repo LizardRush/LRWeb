@@ -16,3 +16,4 @@ login
 use LRTools stuff
 track LRTools stuff
 chat
+download LRTools and other LRTools extensions
