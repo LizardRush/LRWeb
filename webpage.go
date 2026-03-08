@@ -7,13 +7,15 @@ import (
 	"path/filepath"
 )
 
+var  page_path string = "./website/main/"
+
 func pageHandler(w http.ResponseWriter, r *http.Request) {
 
-	path := "./public/pages" + r.URL.Path
+	path := page_path + "pages" + r.URL.Path
 
 	// if root, serve index
 	if r.URL.Path == "/" {
-		path = "./public/pages/index.html"
+		path = page_path + "pages/index.html"
 	} else {
 		path = filepath.Join("./public/pages", r.URL.Path, "index.html")
 	}
