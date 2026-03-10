@@ -9,6 +9,7 @@ import (
 
 var  page_path string = "./website/main/"
 
+
 func pageHandler(w http.ResponseWriter, r *http.Request) {
 
 	path := page_path + "pages" + r.URL.Path
@@ -40,5 +41,5 @@ func main() {
 
 	fmt.Println("Website running on http://localhost:8080")
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":80", nil)
 }
