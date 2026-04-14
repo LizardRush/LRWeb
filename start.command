@@ -1,0 +1,1 @@
+go run start.go api.go assets.go webpage.go

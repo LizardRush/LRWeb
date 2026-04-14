@@ -7,8 +7,9 @@ import (
 	"path/filepath"
 )
 
-var  page_path string = "./website/main/"
+var  page_path string = "./websites/main/"
 
+var port_webpage string = "8080"
 
 func pageHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -18,11 +19,16 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/" {
 		path = page_path + "pages/index.html"
 	} else {
-		path = filepath.Join("./public/pages", r.URL.Path, "index.html")
+		path = filepath.Join("./websites/main/pages", r.URL.Path, "index.html")
 	}
 
 	// check if file exists
 	if _, err := os.Stat(path); os.IsNotExist(err) {
+		if r.URL.Path == "/" {
+			path = r.URL.Path
+		} else {
+			path = filepath.Join("./websites/main/assets", r.URL.Path)
+		}
 		http.NotFound(w, r)
 		return
 	}
@@ -32,14 +38,10 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	// serve assets
-	fs := http.FileServer(http.Dir("./public/assets"))
-	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
-
 	// page routing
 	http.HandleFunc("/", pageHandler)
 
-	fmt.Println("Website running on http://localhost:8080")
+	fmt.Println("Website running on http://localhost:" + port_webpage)
 
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":" + port_webpage, nil)
 }

@@ -10,6 +10,7 @@ api
 chat
 tools
 dev
+files
 
 what it do:
 login

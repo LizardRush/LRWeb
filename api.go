@@ -6,24 +6,21 @@ import (
 	"net/http"
 )
 
+var port_api string = "5000"
 
 func main() {
-	http.HandleFunc("/", ping)
+	http.HandleFunc("/ping", ping)
 
-	// website files
-	fs := http.FileServer(http.Dir("./public"))
-	http.Handle("/", fs)
-
-	fmt.Println("Server running on port 8080")
-	http.ListenAndServe(":5000", nil)
+	fmt.Println("Website running on http://localhost:" + port_api)
+	http.ListenAndServe(":" + port_api, nil)
 }
 
 func ping(w http.ResponseWriter, r *http.Request) {
 
-	if r.Method != "GET" {
-		http.Error(w, "GET only", http.StatusMethodNotAllowed)
-		return
-	}
+	// if r.Method != "GET" {
+	// 	http.Error(w, "GET only", http.StatusMethodNotAllowed)
+	// 	return
+	// }
 
 	fmt.Println("Server")
 
