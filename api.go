@@ -6,14 +6,6 @@ import (
 	"net/http"
 )
 
-type Payload struct {
-	Message string `json:"message"`
-	User    string `json:"user"`
-}
-
-type api struct{
-	websiteModule
-}
 
 func main() {
 	http.HandleFunc("/", ping)
