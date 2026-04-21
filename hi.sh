@@ -1,1 +1,0 @@
-echo "i see u"

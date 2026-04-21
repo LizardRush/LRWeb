@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-var port_api string = "5000"
+var port_api string = "5553"
 
 func main() {
 	http.HandleFunc("/ping", ping)
@@ -17,10 +17,10 @@ func main() {
 
 func ping(w http.ResponseWriter, r *http.Request) {
 
-	// if r.Method != "GET" {
-	// 	http.Error(w, "GET only", http.StatusMethodNotAllowed)
-	// 	return
-	// }
+	if r.Method != http.MethodGet {
+		http.Error(w, "GET only", http.StatusMethodNotAllowed)
+		return
+	}
 
 	fmt.Println("Server")
 
